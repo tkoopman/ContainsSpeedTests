@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using StringContains;
-
-namespace StringContains
+﻿namespace StringContains
 {
     public class BaseLineDeDup : ITestCase
     {
@@ -75,7 +67,6 @@ namespace StringContains
                 if (word.Words.Count > 1)
                     Optimize(word.Words);
             }
-
         }
 
         public int FindAll (string str) => FindAll(str, SearchFor);
@@ -94,6 +85,5 @@ namespace StringContains
 
             return c;
         }
-
     }
 }

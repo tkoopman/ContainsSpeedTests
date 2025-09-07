@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StringContains
+﻿namespace StringContains
 {
     public class VowelFilterBaseLine : ITestCase
     {
@@ -68,6 +62,5 @@ namespace StringContains
 
             return c;
         }
-
     }
 }

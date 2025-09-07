@@ -16,6 +16,7 @@ namespace StringContains.TreeDeDup
             KeySize = keySize;
             Entry = entry;
         }
+
         public int Count ()
         {
             if (Branches is not null && KeySize < 1)
@@ -40,7 +41,7 @@ namespace StringContains.TreeDeDup
             if (Entry?.Branches is not null)
             {
                 c += Entry.Branches.Value.Count();
-                foreach (var branch in Entry.Branches.Value.Branches)
+                foreach (var branch in Entry.Branches.Value.Branches!)
                 {
                     if (branch.Key.Length != Entry.Branches.Value.KeySize)
                         throw new Exception();
@@ -52,30 +53,28 @@ namespace StringContains.TreeDeDup
 
         public int FindAll (string str)
         {
-            var ints = FindAll(str, 0, this, [], [], "");
+            var ints = FindAll(str, 0, this, [], []);
 
             return ints.Count();
         }
 
-        public static IEnumerable<int> FindAll (string str, int startAt, FrozenTreeBranch branch, HashSet<int> found, HashSet<FrozenTreeBranch> processed, string path)
+        public static IEnumerable<int> FindAll (string str, int startAt, FrozenTreeBranch branch, HashSet<int> found, HashSet<FrozenTreeBranch> processed)
         {
             if (branch.Branches is null || !processed.Add(branch))
                 yield break;
-
 
             int i = startAt;
 
             while ((str.Length - i) >= branch.KeySize)
             {
-                path = $"{path}{str[i]}";
-                foreach (int result in SearchBranch(str, branch, found, processed, path, i++))
+                foreach (int result in SearchBranch(str, branch, found, processed, i++))
                     yield return result;
             }
         }
 
-        private static IEnumerable<int> SearchBranch (string str, FrozenTreeBranch branch, HashSet<int> found, HashSet<FrozenTreeBranch> processed, string path, int i)
+        private static IEnumerable<int> SearchBranch (string str, FrozenTreeBranch branch, HashSet<int> found, HashSet<FrozenTreeBranch> processed, int i)
         {
-            foreach (var twig in branch.FindStartingWith(str, i, path))
+            foreach (var twig in branch.FindStartingWith(str, i))
             {
                 if (twig.Entry is not null)
                 {
@@ -91,18 +90,17 @@ namespace StringContains.TreeDeDup
 
                     if (addedAny && twig.Entry.Branches.HasValue)
                     {
-
-                        foreach (int ti in FindAll(str, 0, twig.Entry.Branches.Value, found, processed, $"{path}\\{twig.Entry.Word}\\"))
+                        foreach (int ti in FindAll(str, 0, twig.Entry.Branches.Value, found, processed))
                             yield return ti;
                     }
                 }
 
-                foreach (int bi in SearchBranch(str, twig, found, processed, $"{path}>", i+branch.KeySize))
+                foreach (int bi in SearchBranch(str, twig, found, processed, i + branch.KeySize))
                     yield return bi;
             }
         }
 
-        public IEnumerable<FrozenTreeBranch> FindStartingWith (string str, int startAt, string path)
+        public IEnumerable<FrozenTreeBranch> FindStartingWith (string str, int startAt)
         {
             int endAt = startAt + KeySize;
 

@@ -1,17 +1,16 @@
 ﻿using System.Diagnostics;
-using System.Threading;
 
 using StringContains;
-using StringContains.List;
 
-class Program
+internal class Program
 {
-    private readonly static string[] searchIn = File.ReadAllLines("SearchIn.txt");
+    private static readonly string[] searchIn = File.ReadAllLines("SearchIn.txt");
 
-    private readonly static TimeSpan TimePerRun = TimeSpan.FromSeconds(3);
-    private readonly static int[] InstanceCounts = [1, 2, 3, 4, 5];
-    private readonly static int[] MinWords = [1, 3];
-    private readonly static Type[] TestCaseTypes =
+    private static readonly TimeSpan TimePerRun = TimeSpan.FromSeconds(3);
+    private static readonly int[] InstanceCounts = [1, 2, 3, 4, 5];
+    private static readonly int[] MinWords = [1, 3];
+
+    private static readonly Type[] TestCaseTypes =
         [
             typeof(BaseLine),
             typeof(TreeTest),
@@ -22,7 +21,8 @@ class Program
             typeof(BaseLineDeDup),
             //typeof(TreeDeDupTest),
         ];
-    private readonly static int[] ValidateList = [0, 100, 1000, 10000, 100000];
+
+    private static readonly int[] ValidateList = [0, 100, 1000, 10000, 100000];
 
     private static ITestCase create (Type type) => (ITestCase)Activator.CreateInstance(type)!;
 
@@ -30,8 +30,6 @@ class Program
     {
         Console.WriteLine($"{searchIn.Length:N0} entries loaded to search in");
         List<(string name, int mwl, int instances, TimeSpan timeToLoad, int count, int instanceAvg, long found)> runs = [];
-
-
 
         if (!validateMethod(ValidateList))
             return;
@@ -146,6 +144,5 @@ class Program
 
             startAt = 0;
         }
-
     }
 }

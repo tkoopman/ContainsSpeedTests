@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using StringContains.TreeDeDup;
+﻿using StringContains.TreeDeDup;
 
 namespace StringContains
 {
@@ -22,7 +16,7 @@ namespace StringContains
         public void Load (string[] searchFor)
         {
             BaseLineDeDup deDup = new();
-            deDup.Load (searchFor);
+            deDup.Load(searchFor);
 
             _branch = Load(deDup.SearchFor)!.Value;
         }

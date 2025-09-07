@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics;
 
-class Program
+internal class Program
 {
-    private readonly static TimeSpan TimePerRun = TimeSpan.FromSeconds(10);
+    private static readonly TimeSpan TimePerRun = TimeSpan.FromSeconds(10);
 
-    private readonly static string[] SearchFor = File.ReadAllLines("SearchForMin1.txt");
-    private readonly static string[] RC_SearchFor = File.ReadAllLines("RC_SearchForMin1.txt");
-    private readonly static string[] SearchIn = File.ReadAllLines("SearchIn.txt");
-    private readonly static string[] RC_SearchIn = File.ReadAllLines("RC_SearchIn.txt");
+    private static readonly string[] SearchFor = File.ReadAllLines("SearchForMin1.txt");
+    private static readonly string[] RC_SearchFor = File.ReadAllLines("RC_SearchForMin1.txt");
+    private static readonly string[] SearchIn = File.ReadAllLines("SearchIn.txt");
+    private static readonly string[] RC_SearchIn = File.ReadAllLines("RC_SearchIn.txt");
 
-    private readonly static (string Name, StringComparer Comparer, string[] SearchFor, string[] SearchIn)[] TestCases = [
+    private static readonly (string Name, StringComparer Comparer, string[] SearchFor, string[] SearchIn)[] TestCases = [
         (nameof(StringComparer.Ordinal), StringComparer.Ordinal, SearchFor, SearchIn),
         (nameof(StringComparer.OrdinalIgnoreCase), StringComparer.OrdinalIgnoreCase, RC_SearchFor, RC_SearchIn),
         (nameof(StringComparer.CurrentCulture), StringComparer.CurrentCulture, SearchFor, SearchIn),
@@ -22,7 +22,6 @@ class Program
     {
         Thread.Sleep(TimePerRun);
 
-
         foreach (var (name, comparer, searchFor, searchIn) in TestCases)
         {
             int c = runMultipleWithTimeout(searchFor, searchIn, comparer);
@@ -33,7 +32,6 @@ class Program
     private static int runMultipleWithTimeout (string[] lookFor, string[] searchIn, StringComparer comparer)
     {
         var sw = new Stopwatch();
-        
 
         // Define the cancellation token.
         var source = new CancellationTokenSource();
@@ -45,7 +43,6 @@ class Program
         Thread.Sleep(TimePerRun);
         source.Cancel();
 
-        
         task.Wait();
 
         return task.Result;
@@ -58,7 +55,7 @@ class Program
 
         while (true)
         {
-            foreach(string si in searchIn)
+            foreach (string si in searchIn)
             {
                 foreach (string lf in lookFor)
                 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using StringContains.Tree;
+﻿using StringContains.Tree;
 
 namespace StringContains
 {
@@ -15,7 +9,7 @@ namespace StringContains
         public int FindAll (string str)
         {
             HashSet<int> c = [];
-            
+
             while (str.Length >= _branch.KeySize)
             {
                 foreach (int i in _branch.FindStartingWith(str, 0))

@@ -8,14 +8,14 @@ namespace StringContains.Tree
         public int KeySize { get; } = keySize;
         public FrozenSet<int>? Leafs { get; } = leafs;
 
-        public int Count()
+        public int Count ()
         {
             int c = Leafs?.Count ?? 0;
 
             if (Branches is null)
                 return c;
 
-            foreach(var branch in Branches)
+            foreach (var branch in Branches)
             {
                 c += branch.Value.Count();
             }

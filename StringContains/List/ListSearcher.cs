@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.ExceptionServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StringContains.List
+﻿namespace StringContains.List
 {
     public class ListSearcher : ITestCase
     {
@@ -63,7 +55,6 @@ namespace StringContains.List
                 if (str.StartsWith(y.Item1))
                     yield return y.Item2;
             }
-
         }
 
         public int CompareMinLength (string? left, string? right)

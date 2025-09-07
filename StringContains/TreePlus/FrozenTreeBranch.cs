@@ -1,5 +1,4 @@
 ﻿using System.Collections.Frozen;
-using System.ComponentModel.DataAnnotations;
 
 namespace StringContains.TreePlus
 {
@@ -11,14 +10,14 @@ namespace StringContains.TreePlus
 
         public int MinLen { get; } = minLen;
 
-        public int Count()
+        public int Count ()
         {
             int c = Leafs?.Count ?? 0;
 
             if (Branches is null)
                 return c;
 
-            foreach(var branch in Branches)
+            foreach (var branch in Branches)
             {
                 c += branch.Value.Count();
             }
