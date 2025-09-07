@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyVersion>1.0.0.25250</AssemblyVersion>
+    <FileVersion>1.0.0.250</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Words.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Words.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="RC_SearchForMin1.tt">
+      <LastGenOutput>RC_SearchForMin1.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="RC_SearchForMin1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>RC_SearchForMin1.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Update="SearchForMin2.tt">
+      <LastGenOutput>SearchForMin2.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="SearchForMin2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>SearchForMin2.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Update="SearchForMin4.tt">
+      <LastGenOutput>SearchForMin4.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="SearchForMin4.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>SearchForMin4.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Update="SearchForMin5.tt">
+      <LastGenOutput>SearchForMin5.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="SearchForMin5.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>SearchForMin5.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Update="SearchForMin3.tt">
+      <LastGenOutput>SearchForMin3.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="SearchForMin3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>SearchForMin3.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Update="RC_SearchIn.tt">
+      <LastGenOutput>RC_SearchIn.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="RC_SearchIn.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>RC_SearchIn.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Update="SearchIn.tt">
+      <LastGenOutput>SearchIn.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="SearchIn.txt">
+      <DependentUpon>SearchIn.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SearchForMin1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SearchForMin1.txt</LastGenOutput>
+    </None>
+    <None Update="SearchForMin1.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SearchForMin1.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="words_alpha.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>
